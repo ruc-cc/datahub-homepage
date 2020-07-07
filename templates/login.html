@@ -4,6 +4,9 @@
 <div class="container text-center pangeo">
     <h1>{{ hub_title or 'University of Toronto JupyterHub' }}</h1>
     <h2>{{ hub_subtitle or 'A demonstration hub from 2i2c' }}</h2>
+    <span id="ut-logo">
+      <a href="https://www.utoronto.ca/"><img src="{{static_url("extra-assets/images/ut-logo.svg") }}" alt='University of Toronto logo' class='ut-logo' title='ut logo'/></a>
+    </span>
     <p>
       {% if hub_welcome %}
       {{ (hub_welcome | safe) }}
