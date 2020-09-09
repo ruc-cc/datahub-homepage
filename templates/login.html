@@ -2,21 +2,12 @@
 
 {% block main %}
 <div class="container text-center pangeo">
-    <h1>{{ hub_title or 'University of Toronto JupyterHub' }}</h1>
-    <h2>{{ hub_subtitle or 'A demonstration hub from 2i2c' }}</h2>
+    <h1>University of Toronto JupyterHub</h1>
     <span id="ut-logo">
-      <a href="https://www.utoronto.ca/"><img src="{{static_url("extra-assets/images/ut-logo.svg") }}" alt='University of Toronto logo' class='ut-logo' title='ut logo'/></a>
+      <a href="https://www.utoronto.ca/"><img width="240" src="{{static_url("extra-assets/images/ut-logo.svg") }}" alt='University of Toronto logo' class='ut-logo' title='ut logo'/></a>
     </span>
     <p>
-      {% if hub_welcome %}
-      {{ (hub_welcome | safe) }}
-      {% else %}
-      Welcome to the 2i2c JupyterHub demo for the University of Toronto. This hub
-      has a pre-installed environment that can be used to run some sample book and
-      lab content. See the <a href="https://utoronto.book.2i2c.org/">sample book to try the hub out</a>.
-
-      For more information about 2i2c, visit <a href="http://2i2c.org">2i2c.org</a>.
-      {% endif %}
+      Welcome to the 2i2c JupyterHub demo for the University of Toronto
     </p>
 </div>
 {{ super() }}
