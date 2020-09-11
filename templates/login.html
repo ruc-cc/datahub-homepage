@@ -20,10 +20,23 @@
   <div id="operated-by">
     Operated by <a href="https://2i2c.org/">2i2c.org</a>
   </div>
+  {% if next %}
   <div>
     <a role="button" id="login-button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
-      Log in
+      Log in to continue
     </a>
   </div>
+  {% else %}
+  <div class="btn-group">
+    <button type="button" class="btn btn-jupyter btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Log in <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a href="{{authenticator_login_url}}?next=/hub/user-redirect/tree">Jupyter Notebook</a></li>
+      <li><a href="{{authenticator_login_url}}?next=/hub/user-redirect/rstudio">RStudio</a></li>
+      <li><a href="{{authenticator_login_url}}?next=/hub/user-redirect/lab">JupyterLab</a></li>
+    </ul>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}
