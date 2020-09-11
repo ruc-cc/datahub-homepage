@@ -1,14 +1,29 @@
 {% extends "templates/login.html" %}
 
-{% block main %}
-<div class="container text-center">
-    <h1>University of Toronto JupyterHub</h1>
-    <span id="ut-logo">
-      <a href="https://www.utoronto.ca/"><img width="240" src="{{static_url("extra-assets/images/ut-logo.svg") }}" alt='University of Toronto logo' class='ut-logo' title='ut logo'/></a>
-    </span>
-    <p>
-      Welcome to the 2i2c JupyterHub demo for the University of Toronto
-    </p>
-</div>
+
+{% block nav_bar %}
+{% endblock %}
+
+{% block stylesheet %}
 {{ super() }}
+<link rel="stylesheet" href="{{ static_url("extra-assets/css/login.css") }}" type="text/css"/>
+{% endblock %}
+
+{% block main %}
+<div class="container text-center" id="home">
+  <div>
+    <a href="https://utoronto.2i2c.cloud/">
+      <img src="{{static_url("extra-assets/images/home-hero.png") }}" alt='University of Toronto logo' class='ut-logo'
+        title='ut logo' />
+    </a>
+  </div>
+  <div id="operated-by">
+    Operated by <a href="https://2i2c.org/">2i2c.org</a>
+  </div>
+  <div>
+    <a role="button" id="login-button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
+      Log in
+    </a>
+  </div>
+</div>
 {% endblock %}

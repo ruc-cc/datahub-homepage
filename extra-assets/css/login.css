@@ -1,0 +1,18 @@
+#home {
+    margin-top: 32px
+}
+
+#login-button {
+    margin: 32px 0px;
+    width: 120px;
+}
+
+#operated-by {
+    margin-top: 8px;
+    color: darkgrey;
+}
+
+#operated-by a {
+    color:grey;
+    font-weight: bold;
+}
