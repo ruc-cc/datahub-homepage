@@ -6,11 +6,15 @@
 
 {% block stylesheet %}
 {{ super() }}
-<link rel="stylesheet" href="{{ static_url("extra-assets/css/login.css") }}" type="text/css"/>
+<link rel="stylesheet" href="{{ static_url('extra-assets/css/login.css') }}" type="text/css"/>
 {% endblock %}
 
+{% block script %}
+{{ super() }}
+<script src="{{ static_url('extra-assets/js/login.js') }}"></script>
+{% endblock %}
 {% block main %}
-<div class="container text-center" id="home">
+<div class="container text-center" id="home" data-authenticator-login-url="{{authenticator_login_url}}"">
   <div>
     <a href="https://utoronto.2i2c.cloud/">
       <img src="{{static_url("extra-assets/images/home-hero.png") }}" alt='University of Toronto logo' class='ut-logo'
@@ -20,23 +24,33 @@
   <div id="operated-by">
     Operated by <a href="https://2i2c.org/">2i2c.org</a>
   </div>
-  {% if next %}
-  <div>
-    <a role="button" id="login-button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
+  <div class="login-container text-center">
+    {% if next %}
+    <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
       Log in to continue
     </a>
+    {% else %}
+    <form class="form-inline">
+      <div class="form-group interface-selector">
+        <label>After logging in, open: </label>
+        <label class="radio-inline">
+          <input type="radio" name="interface" value="tree" checked>Jupyter Notebook
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="interface" value="rstudio">RStudio
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="interface" value="lab">JupyterLab
+        </label>
+      </div>
+    </form>
+    <a role="button" 
+       id="login-button"
+       class='btn btn-jupyter btn-lg' 
+       href='{{authenticator_login_url}}'>
+        Log in to start
+    </a>
+    {% endif %}
   </div>
-  {% else %}
-  <div class="btn-group">
-    <button type="button" class="btn btn-jupyter btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Log in <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a href="{{authenticator_login_url}}?next=/hub/user-redirect/tree">Jupyter Notebook</a></li>
-      <li><a href="{{authenticator_login_url}}?next=/hub/user-redirect/rstudio">RStudio</a></li>
-      <li><a href="{{authenticator_login_url}}?next=/hub/user-redirect/lab">JupyterLab</a></li>
-    </ul>
-  </div>
-  {% endif %}
 </div>
 {% endblock %}
