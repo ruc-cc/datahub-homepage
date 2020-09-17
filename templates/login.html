@@ -14,15 +14,15 @@
 <script src="{{ static_url('extra-assets/js/login.js') }}"></script>
 {% endblock %}
 {% block main %}
-<div class="container text-center" id="home" data-authenticator-login-url="{{authenticator_login_url}}"">
-  <div>
+<div class="container" id="home" data-authenticator-login-url="{{authenticator_login_url}}"">
+  <div class="text-center">
     <a href="https://utoronto.2i2c.cloud/">
       <img src="{{static_url("extra-assets/images/home-hero.png") }}" alt='University of Toronto logo' class='ut-logo'
         title='ut logo' />
     </a>
-  </div>
   <div id="operated-by">
     Operated by <a href="https://2i2c.org/">2i2c.org</a>
+  </div>
   </div>
   <div class="login-container text-center">
     {% if next %}
@@ -52,5 +52,53 @@
     </a>
     {% endif %}
   </div>
+
+  <div class="col-md-8 col-md-offset-2 details">
+    <div class="col-md-6">
+      <big class="details-welcome lead">
+      Welcome to the new University of Toronto <strong>JupyterHub for Teaching</strong> site.
+      </big>
+      <br />
+      <br />
+      A proof of concept service, developed as a partnership between
+      the <a href="https://cio.utoronto.ca/">Office of the CIO</a> (Information
+      Technology Services), the Faculty of Arts & Science’s new Computational
+      and Data Science Education initiative, the <a href="https://2i2c.org">2i2c
+      Consortium</a>, and Microsoft Canada.
+    </div>
+    <div class="col-md-6 details-logos">
+      <div class="pull-right">
+        <a href="https://jupyter.org">
+          <img src="{{static_url("extra-assets/images/jupyter-logo.svg") }}" alt='Jupyter' height="64" />
+        </a>
+      </div>
+      <div class="pull-right">
+        <a href="https://rstudio.com">
+          <img src="{{static_url("extra-assets/images/rstudio-logo.svg") }}" alt='RStudio' height="64"/>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-8 col-md-offset-2 questions">
+    <div>
+      <h4>Who can use this service?</h4>
+
+      This JupyterHub service is open to UofT instructors and students; as this
+      is a proof-of-concept service, students should ensure they are backing up
+      their notebooks regularly if they are using this service for course
+      activities.
+    </div>
+
+    <div>
+      <h4>What packages &amp; libraries are available?</h4>
+      This JupyterHub comes with Python 3.8 and R 4.0 installed. Many commonly
+      used packages are pre-installed. This <a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/blob/prod/deployments/utoronto/image/environment.yml">environment.yml</a> file
+      lists the python packages installed, while this <a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/blob/prod/deployments/utoronto/image/install.R">
+      install.R</a> file lists the R packages installed.
+    </div>
+  </div>
+
 </div>
 {% endblock %}

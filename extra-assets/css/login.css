@@ -18,3 +18,29 @@
     color:grey;
     font-weight: bold;
 }
+
+.details {
+    padding: 32px 0px;
+}
+
+.details-welcome {
+    color: black;
+}
+
+.details-logos img {
+    margin: 12px;
+    text-align: right;
+}
+
+.details p {
+    color: grey;
+}
+
+.questions {
+    margin-top: 12px;
+}
+
+.questions > div {
+    margin-top: 32px;
+    border-top: 2px lightgrey dotted;
+}
