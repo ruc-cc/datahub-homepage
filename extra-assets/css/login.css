@@ -20,7 +20,7 @@
 }
 
 .details {
-    padding: 32px 0px;
+    margin-top: 32px;
 }
 
 .details-welcome {
@@ -44,4 +44,15 @@
     margin-top: 32px;
     padding-top: 16px;
     border-top: 2px lightgrey dotted;
+}
+
+.footer {
+    padding-top: 64px;
+    text-align: center;
+    color: darkgrey;
+}
+
+.footer a {
+    color: darkgrey;
+    text-decoration: underline;
 }

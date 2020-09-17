@@ -94,11 +94,57 @@
     <div>
       <h4>What packages &amp; libraries are available?</h4>
       This JupyterHub comes with Python 3.8 and R 4.0 installed. Many commonly
-      used packages are pre-installed. This <a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/blob/prod/deployments/utoronto/image/environment.yml">environment.yml</a> file
-      lists the python packages installed, while this <a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/blob/prod/deployments/utoronto/image/install.R">
-      install.R</a> file lists the R packages installed.
+      used packages are pre-installed. This <code><a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/blob/prod/deployments/utoronto/image/environment.yml">environment.yml</a></code> file
+      lists the python packages installed, while this <code><a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/blob/prod/deployments/utoronto/image/install.R">
+      install.R</a></code> file lists the R packages installed.
     </div>
-  </div>
 
+    <div>
+      <h4>Can I install my own packages?</h4>
+      Yes, you can! In a Jupyter Notebook, you can use <code>%pip install
+      package-name</code> or <code>%conda install package-name</code> to install
+      a Python package. With R, you can use <code>install.packages()</code>.
+
+      To prevent individual user environments diverging from each other too
+      much, your user installed packages <strong>only last the length of your
+      server</strong>. So we recommend putting those package installation lines
+      in the beginning of the notebook / file that you are using, so it can be
+      run each time as necessary.
+    </div>
+
+    <div>
+      <h4>Can a package be installed for all my students?</h4>
+
+      Most likely! Please open a <a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/issues">GitHub Issue</a>
+      with your request. Even better, make a pull request with changes to the
+      <code><a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/blob/staging/deployments/utoronto/image/environment.yml">environment.yml</a></code>
+      file (for Python packages) and
+      <code><a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/blob/staging/deployments/utoronto/image/install.R">install.R</a></code>
+      file for R packages.
+    </div>
+
+    <div>
+      <h4>I have many other questions!</h4>
+      Awesome! Please <a href="https://github.com/utoronto-2i2c/jupyterhub-deploy/issues">open an issues</a>
+      an we will help answer them!
+    </div>
+
+
+  <div class="footer">
+    <p>
+      This service is run transparently from
+      <a href="https://github.com/utoronto-2i2c/jupyterhub-deploy">
+        github.com/utoronto-2i2c/jupyterhub-deploy
+      </a>
+    </p>
+    <p>
+      Built with
+      <a href="https://k8s.org">Kubernetes</a>,
+      <a href="https://helm.sh">Helm</a>,
+      <a href="https://docker.com">Docker</a>,
+      <a href="https://github.com/conda-forge/miniforge">Miniforge</a> and
+      many parts of the <a href="https://jupyter.org">Jupyter Project</a>
+      </p>
+  </div>
 </div>
 {% endblock %}
