@@ -42,5 +42,6 @@
 
 .questions > div {
     margin-top: 32px;
+    padding-top: 16px;
     border-top: 2px lightgrey dotted;
 }
