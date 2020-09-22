@@ -1,3 +1,8 @@
+function redirectIfNeeded() {
+    if (window.location.hostname !== 'jupyter.utoronto.ca') {
+        window.location.hostname = 'jupyter.utoronto.ca';
+    }
+}
 function setInterface(interfaceUrl) {
     let loginUrl = new URL($('#home').data('authenticator-login-url'), document.location.origin);
     loginUrl.searchParams.set('next', '/hub/user-redirect/' + interfaceUrl)
