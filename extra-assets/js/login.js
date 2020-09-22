@@ -12,6 +12,7 @@ function setInterface(interfaceUrl) {
     );
 }
 $(function() {
+    redirectIfNeeded();
     // if next query param is presentm just do nothing
     const nextPresent = new URL(document.location).searchParams.get('next');
     if (!nextPresent) {
