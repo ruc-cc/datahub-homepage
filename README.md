@@ -8,7 +8,6 @@ This repo contains html jinja2 templates for customising the appearance of Jupyt
 
 You can run a local JupyterHub to test your template changes.
 
-
 1. Setup a virtual python environment and ensure you have NPM installed.
 
 2. Set up [`configurable-http-proxy`](https://github.com/jupyterhub/configurable-http-proxy#install)
@@ -24,6 +23,7 @@ You can run a local JupyterHub to test your template changes.
    ```bash
    ln -s $(pwd)/extra-assets $(dirname $(which python3))/../share/jupyterhub/static
    ```
+
 5. Add extra templates variables you might use in the templates, by editing
    `jupyterhub_config.py` file's `c.JupyterHub.template_vars`
 

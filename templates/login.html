@@ -10,13 +10,12 @@ stylesheet %} {{ super() }}
 {% endblock %} {% block main %} <div class="container" id="home"
 data-authenticator-login-url="{{authenticator_login_url}}"">
 <div class="text-center">
-  <a href="https://utoronto.2i2c.cloud/">
-    <img src="{{static_url("extra-assets/images/berkeleylogo.png") }}"
-    alt='University of California, Berkeley logo' class='ut-logo' title='ut
-    logo' />
+  <a href="https://datahub.berkeley.edu/">
+    <img src="{{ static_url('extra-assets/images/berkeleylogo.png') }}"
+    alt='University of California, Berkeley logo' id='berkeley-logo' title='UC Berkeley logo' />
   </a>
   <div id="operated-by">
-    Operated by <a href="https://2i2c.org/">2i2c.org</a>
+    Operated by the <a href="https://data.berkeley.edu/">Division of Computing, Data Science, and Society</a>
   </div>
 </div>
 <div class="login-container text-center">
@@ -119,8 +118,8 @@ data-authenticator-login-url="{{authenticator_login_url}}"">
     We recommend using
     <a href="https://jupyterhub.github.io/nbgitpuller/">nbgitpuller</a>
     to distribute content to students. You can construct a
-    <a href="https://jupyterhub.github.io/nbgitpuller/link">nbgitpuller</a>
-    link, and send it to your students. When they click it, the course content
+    <a href="https://jupyterhub.github.io/nbgitpuller/link">nbgitpuller
+    link</a>, and send it to your students. When they click it, the course content
     will be pulled into their home directories, and the appropriate file will be
     opened.
   </div>
@@ -159,8 +158,8 @@ data-authenticator-login-url="{{authenticator_login_url}}"">
   <div>
     <h4>Can I install my own packages?</h4>
     Yes, you can! In a Jupyter Notebook, you can use
-    <code>%pip install package-name</code> or
-    <code>%conda install package-name</code> to install a Python package. With
+    <code>!pip install package-name</code> or
+    <code>!conda install package-name</code> to install a Python package. With
     R, you can use <code>install.packages()</code>. To prevent individual user
     environments diverging from each other too much, your user installed
     packages <strong>only last the length of your server</strong>. So we
@@ -204,8 +203,8 @@ data-authenticator-login-url="{{authenticator_login_url}}"">
   <div class="footer">
     <p>
       This service is run transparently from
-      <a href="https://github.com/ucbds-infra/datahub-homepage">
-        github.com/ucbds-infra/datahub-homepage.
+      <a href="https://github.com/berkeley-dsep-infra/datahub">
+        berkeley-dsep-infra/datahub on GitHub.
       </a>
     </p>
     <p>
