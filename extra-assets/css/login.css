@@ -56,3 +56,7 @@
     color: darkgrey;
     text-decoration: underline;
 }
+
+#berkeley-logo {
+    max-width: 650px;
+}
