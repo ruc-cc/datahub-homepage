@@ -2,8 +2,8 @@
     margin-top: 32px
 }
 
-.login-container {
-    margin-top: 32px;
+.top-container {
+    margin-top: 24px;
 }
 
 #login-button {
@@ -12,6 +12,8 @@
 #operated-by {
     margin-top: 8px;
     color: darkgrey;
+    font-size: 18px;
+    padding-bottom: 15px;
 }
 
 #operated-by a {
@@ -38,18 +40,21 @@
 
 .questions {
     margin-top: 12px;
+    background-color: #F5F5F5;
 }
 
 .questions > div {
-    margin-top: 32px;
-    padding-top: 16px;
-    border-top: 2px lightgrey dotted;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-top: 4px lightgrey dotted;
+    /* background-color: #F5F5F5; */
 }
 
 .footer {
     padding-top: 64px;
     text-align: center;
     color: darkgrey;
+    font-size: 16px;
 }
 
 .footer a {
@@ -58,5 +63,24 @@
 }
 
 #ruc-logo {
-    max-width: 650px;
+  width: 250px;
+  height: 250px;
+}
+
+h4 {
+  font-weight:bold;
+  font-size: 22px;
+}
+
+.introduction {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.header {
+  top: .25rem;
+  right: 1rem;
+  padding: .75rem 1rem;
+  border-width: 5px;
+  border-radius: 1px;
 }
