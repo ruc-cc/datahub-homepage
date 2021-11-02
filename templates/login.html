@@ -1,159 +1,218 @@
 {% extends "templates/login.html" %} {% block nav_bar %} {% endblock %} {% block
 stylesheet %} {{ super() }}
-<link
-  rel="stylesheet"
-  href="/etc/jupyterhub/custom/extra-assets/css/login.css"
-  type="text/css"
-/>
-{% endblock %} {% block script %} {{ super() }} {% endblock %} {% block main %}
-<div
-  class="container"
-  id="home"
-  data-authenticator-login-url="{{authenticator_login_url}}"
->
-  <div class="text-center">
-    <a href="https://www.ruc.edu.cn/">
-      <img
-        src="https://jiang-1306747567.cos.ap-beijing.myqcloud.com/ruclogo.jpeg"
-        alt="Renmin University of China logo"
-        id="ruc-logo"
-        title="RUC logo"
-        height="300px"
-      />
-    </a>
-    <div id="operated-by">
-      Operated by the
-      <a href="http://info.ruc.edu.cn/">School of Information</a>
-    </div>
-  </div>
-  <div class="login-container text-center">
-    {% if next %}
-    <a
-      role="button"
-      class="btn btn-jupyter btn-lg"
-      href="{{authenticator_login_url}}"
-    >
-      Log in to continue
-    </a>
-    {% else %}
-    <!-- <form class="form-inline">
-      <div class="form-group interface-selector">
-        <label>After logging in, open: </label>
-        <label class="radio-inline">
-          <input type="radio" name="interface" value="tree" checked />
-          Jupyter Notebook
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="interface" value="rstudio" />RStudio
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="interface" value="lab" />JupyterLab
-        </label>
-      </div>
-    </form> -->
-    <a
-      role="button"
-      id="login-button"
-      class="btn btn-jupyter btn-lg"
-      href="{{authenticator_login_url}}"
-    >
-      Log in to start
-    </a>
-    {% endif %}
-  </div>
+<style type="text/css">
+  #home {
+    margin-top: 32px;
+    padding: 0px;
+  }
 
-  <div class="col-md-8 col-md-offset-2 details">
-    <div class="col-md-6">
-      <div class="details-welcome lead">
-        Welcome to the Renmin University of China
-        <strong>DataHub</strong>.
-      </div>
-      <br />
-      <br />
-      <!-- A proof of concept service, developed as a partnership between
-      the <a href="https://cio.utoronto.ca/">Office of the CIO</a> (Information
-      Technology Services), the Faculty of Arts & Science’s new Computational
-      and Data Science Education initiative, the <a href="https://2i2c.org">2i2c
-      Consortium</a>, and Microsoft Canada. -->
-    </div>
-    <div class="col-md-6 details-logos">
-      <div class="pull-right">
-        <a href="https://jupyter.org">
-          <img
-            src="https://jiang-1306747567.cos.ap-beijing.myqcloud.com/jupyter-logo.svg"
-            alt="Jupyter"
-            height="64"
-          />
-        </a>
-      </div>
-      <!-- <div class="pull-right">
-      <a href="https://rstudio.com">
-        <img src="{{static_url("extra-assets/images/rstudio-logo.svg") }}"
-        alt='RStudio' height="64"/>
-      </a>
-    </div> -->
-    </div>
-  </div>
+  .top-container {
+    margin-top: 24px;
+  }
 
-  <div class="col-md-8 col-md-offset-2 questions">
-    <div>
-      <h4>What is a Jupyter Notebook?</h4>
-      <a href="https://jupyter.org">Jupyter Notebook</a>
-      is an open-source web application that allows you to create and share
-      documents that contain live code, equations, visualizations and narrative
-      text. Uses include: data cleaning and transformation, numerical
-      simulation, statistical modeling, data visualization, machine learning,
-      and much more.
-    </div>
-    <br />
-    <div>
-      <h4>What is JupyterHub?</h4>
-      <a href="https://github.com/jupyterhub/jupyterhub">JupyterHub</a>
-      brings the power of notebooks to groups of users. It gives users access to
-      computational environments and resources without burdening the users with
-      installation and maintenance tasks. Users - including students,
-      researchers, and data scientists - can get their work done in their own
-      workspaces on shared resources which can be managed efficiently by system
-      administrators.
-    </div>
-    <br />
-    <div>
-      <h4>Who can use this service?</h4>
-      This JupyterHub service is open to RUC instructors and students; as this
-      is a proof-of-concept service, students should ensure they are backing up
-      their notebooks regularly if they are using this service for course
-      activities.
-    </div>
-    <br />
-    <div>
-      <h4>How do I distribute course content to students?</h4>
-      We recommend using
-      <a href="https://jupyterhub.github.io/nbgitpuller/">nbgitpuller</a>
-      to distribute content to students. You can construct a
-      <a href="https://jupyterhub.github.io/nbgitpuller/link">
-        nbgitpuller link
-      </a>
-      , and send it to your students. When they click it, the course content
-      will be pulled into their home directories, and the appropriate file will
-      be opened.
-    </div>
-    <br />
-    <div class="footer">
-      <p>
-        This service is run transparently from
-        <!-- <a href="https://github.com/berkeley-dsep-infra/datahub"> -->
-        datahub on GitHub.
-        <!-- </a> -->
-      </p>
-      <p>
-        Built with
-        <a href="https://k8s.org">Kubernetes</a>,
-        <a href="https://helm.sh">Helm</a>,
-        <a href="https://docker.com">Docker</a>,
-        <a href="https://github.com/conda-forge/miniforge">Miniforge</a>
-        and many parts of the <a href="https://jupyter.org">Jupyter Project</a>
-      </p>
-    </div>
-  </div>
-  {% endblock %}
+  #login-button {
+    margin-top: 32px;
+  }
+  #operated-by {
+    margin-top: 8px;
+    color: darkgrey;
+    font-size: 18px;
+    padding-bottom: 25px;
+  }
+
+  #operated-by a {
+    color:grey;
+    font-weight: bold;
+  }
+
+  .details {
+    margin-top: 32px;
+  }
+
+  .details-welcome {
+    color: black;
+  }
+
+  .details-logos img {
+    margin: 12px;
+    text-align: right;
+  }
+
+  .details p {
+    color: grey;
+  }
+
+  .questions {
+    margin-top: 12px;
+    background-color: #F5F5F5;
+    margin-top: 0px;
+  }
+
+  .questions > div {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-top: 4px lightgrey dotted;
+  }
+
+  .footer {
+    padding-top: 64px;
+    text-align: center;
+    color: darkgrey;
+    font-size: 16px;
+    background-color: white; 
+    padding-top: 25px;
+  }
+
+  .footer a {
+    color: darkgrey;
+    text-decoration: underline;
+  }
+
+  #ruc-logo {
+    width: 250px;
+    height: 250px;
+  }
+
+  h4 {
+    font-weight:bold;
+    font-size: 22px;
+  }
+
+  .introduction {
+    font-size: 18px;
+    font-weight: 300;
+  }
+</style>
+
+<script type="text/javascript">
+  function setInterface(interfaceUrl) {
+    let loginUrl = new URL($('#home').data('authenticator-login-url'), document.location.origin);
+    loginUrl.searchParams.set('next', '/hub/user-redirect/' + interfaceUrl)
+    $('#login-button').attr(
+      'href',
+      loginUrl.toString()
+    );
+  }
+
+  $(function() {
+    const nextPresent = new URL(document.location).searchParams.get('next');
+    if (!nextPresent) {
+      setInterface($("input[name='interface']:checked").val());
+
+      $("input[name='interface']").change(function() {
+          if (this.checked) {
+            setInterface(this.value)
+          }
+      });
+    }
+  })
+</script>
+{% endblock %} {% block script %} {{ super() }}
+{% endblock %} {% block main %} <div class="container-fluid" id="home"
+data-authenticator-login-url="{{authenticator_login_url}}"">
+
+<div class="text-center">
+  <a href="https://www.ruc.edu.cn/">
+    <img src="{{ static_url('extra-assets/images/ruclogo.jpeg') }}"
+    alt='Renmin University of China logo' id='ruc-logo' title='RUC logo' height="300px" />
+  </a>
 </div>
+
+<div class="top-container text-center">
+  {% if next %}
+  <a
+    role="button"
+    class="btn btn-jupyter btn-lg"
+    href="{{authenticator_login_url}}"
+    style="font-size: 22px; background-color: #8D3545; border-color: #8D3545; padding: 10px 14px;"
+  >
+    点&nbsp;击&nbsp;登&nbsp;录
+  </a>
+  {% else %}
+  <form class="form-inline">
+    <div class="form-group interface-selector">
+    <label>After logging in, open: </label>
+    <label class="radio-inline">
+      <input type="radio" name="interface" value="tree" checked />Jupyter
+      Notebook
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="interface" value="lab" />JupyterLab
+    </label>
+    </div>
+  </form>
+  <a
+    role="button"
+    id="login-button"
+    class="btn btn-jupyter btn-lg"
+    href="{{authenticator_login_url}}"
+  >
+    Log in to start
+  </a>
+  {% endif %}
+</div>
+
+<div class="top-container text-center">
+  <div id="operated-by">
+    本服务由中国人民大学大型科学仪器共享平台直管的校级计算平台维护
+  </div>
+</div>
+
+<div class="container-fluid" style="background-color: #F5F5F5;">
+<div class="col-md-8 col-md-offset-2 questions">
+  <div>
+    <h4>Jupyter&nbsp;Notebook&nbsp;是什么？</h4>
+    <p class="introduction">
+    <a href="https://jupyter.org">Jupyter&nbsp;Notebook&nbsp;</a>
+    是一个开源&nbsp;web&nbsp;的应用程序，允许您创建和共享包含实时代码、方程式、可视化和叙述文本的文档。
+    它的用途包括：数据清理和转换、数值模拟、统计建模、数据可视化、机器学习等。
+    </p>
+  </div>
+
+  <div>
+    <h4>JupyterHub&nbsp;是什么？</h4>
+    <p class="introduction">
+    <a href="https://github.com/jupyterhub/jupyterhub">JupyterHub&nbsp;</a> 
+    将&nbsp;Jupyter&nbsp;Notebook&nbsp;的便利带给了各组用户。
+    它让用户能够访问计算环境和资源，而无需承担安装和维护任务。
+    用户（包括学生、研究人员和数据科学家）可以在自己的工作空间中利用共享资源来完成工作，
+    这些资源可以由系统管理员进行有效的管理。
+    </p>
+  </div>
+
+  <div>
+    <h4>谁可以使用这项服务？</h4>
+    <p class="introduction">
+    该&nbsp;JupyterHub&nbsp;向中国人民大学教师和学生开放；
+    由于这是一项概念验证性服务，如果学生在课程活动中使用此服务，应确保他们定期备份&nbsp;Jupyter&nbsp;Notebook&nbsp;。
+    </p>
+  </div>
+
+  <div style="border-bottom: 4px lightgrey dotted;">
+    <h4>教师应该如何向学生发布课程内容？</h4>
+    <p class="introduction">
+    我们建议使用
+    <a href="https://jupyterhub.github.io/nbgitpuller/">&nbsp;nbgitpuller&nbsp;</a>
+    向学生分发内容。您可以构建一个
+    <a href="https://jupyterhub.github.io/nbgitpuller/link">&nbsp;nbgitpuller&nbsp;</a>
+    链接，并将其发送给您的学生。
+    当他们点击时，课程内容将被拉入他们的主目录，并打开相应的文件
+    </p>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid">
+  <div class="footer">
+    <p>
+      按照如下方式联系我们
+    </p>
+    <p>
+      电话：010-82503969
+    </p>
+    <p>
+      邮箱答疑：hpc@ruc.edu.cn
+    </p>
+  </div>
+</div>
+{% endblock %}
