@@ -1,101 +1,14 @@
 {% extends "templates/login.html" %} {% block nav_bar %} {% endblock %} {% block
 stylesheet %} {{ super() }}
-<!-- <link
+<link
   rel="stylesheet"
   href="{{ static_url('extra-assets/css/login.css') }}"
   type="text/css"
-/> -->
+/>
 {% endblock %} {% block script %} {{ super() }}
 <script src="{{ static_url('extra-assets/js/login.js') }}"></script>
 {% endblock %} {% block main %} <div class="container-fluid" id="home"
 data-authenticator-login-url="{{authenticator_login_url}}"">
-
-<style>
-  #home {
-    margin-top: 32px;
-    padding: 0px;
-}
-
-.top-container {
-    margin-top: 24px;
-}
-
-#login-button {
-    margin-top: 32px;
-}
-#operated-by {
-    margin-top: 8px;
-    color: darkgrey;
-    font-size: 18px;
-    padding-bottom: 25px;
-}
-
-#operated-by a {
-    color:grey;
-    font-weight: bold;
-}
-
-.details {
-    margin-top: 32px;
-}
-
-.details-welcome {
-    color: black;
-}
-
-.details-logos img {
-    margin: 12px;
-    text-align: right;
-}
-
-.details p {
-    color: grey;
-}
-
-.questions {
-    margin-top: 12px;
-    background-color: #F5F5F5;
-    margin-top: 0px;
-}
-
-.questions > div {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    border-top: 4px lightgrey dotted;
-    /* background-color: #F5F5F5; */
-}
-
-.footer {
-  padding-top: 64px;
-  text-align: center;
-  color: darkgrey;
-  font-size: 16px;
-  background-color: white; 
-  padding-top: 25px;
-}
-
-.footer a {
-  color: darkgrey;
-  text-decoration: underline;
-  
-}
-
-#ruc-logo {
-  width: 250px;
-  height: 250px;
-}
-
-h4 {
-  font-weight:bold;
-  font-size: 22px;
-}
-
-.introduction {
-  font-size: 18px;
-  font-weight: 300;
-}
-
-</style>
 
 <div class="text-center">
   <a href="https://www.ruc.edu.cn/">
