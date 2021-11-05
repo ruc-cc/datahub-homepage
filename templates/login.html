@@ -21,7 +21,7 @@ stylesheet %} {{ super() }}
   }
 
   #operated-by a {
-    color:grey;
+    color: grey;
     font-weight: bold;
   }
 
@@ -44,7 +44,7 @@ stylesheet %} {{ super() }}
 
   .questions {
     margin-top: 12px;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
     margin-top: 0px;
   }
 
@@ -59,7 +59,7 @@ stylesheet %} {{ super() }}
     text-align: center;
     color: darkgrey;
     font-size: 16px;
-    background-color: white; 
+    background-color: white;
     padding-top: 25px;
   }
 
@@ -74,7 +74,7 @@ stylesheet %} {{ super() }}
   }
 
   h4 {
-    font-weight:bold;
+    font-weight: bold;
     font-size: 22px;
   }
 
@@ -86,35 +86,40 @@ stylesheet %} {{ super() }}
 
 <script type="text/javascript">
   function setInterface(interfaceUrl) {
-    let loginUrl = new URL($('#home').data('authenticator-login-url'), document.location.origin);
-    loginUrl.searchParams.set('next', '/hub/user-redirect/' + interfaceUrl)
-    $('#login-button').attr(
-      'href',
-      loginUrl.toString()
+    let loginUrl = new URL(
+      $("#home").data("authenticator-login-url"),
+      document.location.origin
     );
+    loginUrl.searchParams.set("next", "/hub/user-redirect/" + interfaceUrl);
+    $("#login-button").attr("href", loginUrl.toString());
   }
 
-  $(function() {
-    const nextPresent = new URL(document.location).searchParams.get('next');
+  $(function () {
+    const nextPresent = new URL(document.location).searchParams.get("next");
     if (!nextPresent) {
       setInterface($("input[name='interface']:checked").val());
 
-      $("input[name='interface']").change(function() {
-          if (this.checked) {
-            setInterface(this.value)
-          }
+      $("input[name='interface']").change(function () {
+        if (this.checked) {
+          setInterface(this.value);
+        }
       });
     }
-  })
+  });
 </script>
-{% endblock %} {% block script %} {{ super() }}
-{% endblock %} {% block main %} <div class="container-fluid" id="home"
+{% endblock %} {% block script %} {{ super() }} {% endblock %} {% block main %}
+<div class="container-fluid" id="home"
 data-authenticator-login-url="{{authenticator_login_url}}"">
 
 <div class="text-center">
   <a href="https://www.ruc.edu.cn/">
-    <img src="{{ static_url('extra-assets/images/ruclogo.jpeg') }}"
-    alt='Renmin University of China logo' id='ruc-logo' title='RUC logo' height="300px" />
+    <img
+      src="https://jiang-1306747567.cos.ap-beijing.myqcloud.com/ruclogo.jpeg"
+      alt="Renmin University of China logo"
+      id="ruc-logo"
+      title="RUC logo"
+      height="300px"
+    />
   </a>
 </div>
 
@@ -124,21 +129,26 @@ data-authenticator-login-url="{{authenticator_login_url}}"">
     role="button"
     class="btn btn-jupyter btn-lg"
     href="{{authenticator_login_url}}"
-    style="font-size: 22px; background-color: #8D3545; border-color: #8D3545; padding: 10px 14px;"
+    style="
+      font-size: 22px;
+      background-color: #8d3545;
+      border-color: #8d3545;
+      padding: 10px 14px;
+    "
   >
     点&nbsp;击&nbsp;登&nbsp;录
   </a>
   {% else %}
   <form class="form-inline">
     <div class="form-group interface-selector">
-    <label>After logging in, open: </label>
-    <label class="radio-inline">
-      <input type="radio" name="interface" value="tree" checked />Jupyter
-      Notebook
-    </label>
-    <label class="radio-inline">
-      <input type="radio" name="interface" value="lab" />JupyterLab
-    </label>
+      <label>After logging in, open: </label>
+      <label class="radio-inline">
+        <input type="radio" name="interface" value="tree" checked />Jupyter
+        Notebook
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="interface" value="lab" />JupyterLab
+      </label>
     </div>
   </form>
   <a
@@ -158,61 +168,59 @@ data-authenticator-login-url="{{authenticator_login_url}}"">
   </div>
 </div>
 
-<div class="container-fluid" style="background-color: #F5F5F5;">
-<div class="col-md-8 col-md-offset-2 questions">
-  <div>
-    <h4>Jupyter&nbsp;Notebook&nbsp;是什么？</h4>
-    <p class="introduction">
-    <a href="https://jupyter.org">Jupyter&nbsp;Notebook&nbsp;</a>
-    是一个开源&nbsp;web&nbsp;的应用程序，允许您创建和共享包含实时代码、方程式、可视化和叙述文本的文档。
-    它的用途包括：数据清理和转换、数值模拟、统计建模、数据可视化、机器学习等。
-    </p>
-  </div>
+<div class="container-fluid" style="background-color: #f5f5f5">
+  <div class="col-md-8 col-md-offset-2 questions">
+    <div>
+      <h4>Jupyter&nbsp;Notebook&nbsp;是什么？</h4>
+      <p class="introduction">
+        <a href="https://jupyter.org">Jupyter&nbsp;Notebook&nbsp;</a>
+        是一个开源&nbsp;web&nbsp;的应用程序，允许您创建和共享包含实时代码、方程式、可视化和叙述文本的文档。
+        它的用途包括：数据清理和转换、数值模拟、统计建模、数据可视化、机器学习等。
+      </p>
+    </div>
 
-  <div>
-    <h4>JupyterHub&nbsp;是什么？</h4>
-    <p class="introduction">
-    <a href="https://github.com/jupyterhub/jupyterhub">JupyterHub&nbsp;</a> 
-    将&nbsp;Jupyter&nbsp;Notebook&nbsp;的便利带给了各组用户。
-    它让用户能够访问计算环境和资源，而无需承担安装和维护任务。
-    用户（包括学生、研究人员和数据科学家）可以在自己的工作空间中利用共享资源来完成工作，
-    这些资源可以由系统管理员进行有效的管理。
-    </p>
-  </div>
+    <div>
+      <h4>JupyterHub&nbsp;是什么？</h4>
+      <p class="introduction">
+        <a href="https://github.com/jupyterhub/jupyterhub">JupyterHub&nbsp;</a>
+        将&nbsp;Jupyter&nbsp;Notebook&nbsp;的便利带给了各组用户。
+        它让用户能够访问计算环境和资源，而无需承担安装和维护任务。
+        用户（包括学生、研究人员和数据科学家）可以在自己的工作空间中利用共享资源来完成工作，
+        这些资源可以由系统管理员进行有效的管理。
+      </p>
+    </div>
 
-  <div>
-    <h4>谁可以使用这项服务？</h4>
-    <p class="introduction">
-    该&nbsp;JupyterHub&nbsp;向中国人民大学教师和学生开放；
-    由于这是一项概念验证性服务，如果学生在课程活动中使用此服务，应确保他们定期备份&nbsp;Jupyter&nbsp;Notebook&nbsp;。
-    </p>
-  </div>
+    <div>
+      <h4>谁可以使用这项服务？</h4>
+      <p class="introduction">
+        该&nbsp;JupyterHub&nbsp;向中国人民大学教师和学生开放；
+        由于这是一项概念验证性服务，如果学生在课程活动中使用此服务，应确保他们定期备份&nbsp;Jupyter&nbsp;Notebook&nbsp;。
+      </p>
+    </div>
 
-  <div style="border-bottom: 4px lightgrey dotted;">
-    <h4>教师应该如何向学生发布课程内容？</h4>
-    <p class="introduction">
-    我们建议使用
-    <a href="https://jupyterhub.github.io/nbgitpuller/">&nbsp;nbgitpuller&nbsp;</a>
-    向学生分发内容。您可以构建一个
-    <a href="https://jupyterhub.github.io/nbgitpuller/link">&nbsp;nbgitpuller&nbsp;</a>
-    链接，并将其发送给您的学生。
-    当他们点击时，课程内容将被拉入他们的主目录，并打开相应的文件
-    </p>
+    <div style="border-bottom: 4px lightgrey dotted">
+      <h4>教师应该如何向学生发布课程内容？</h4>
+      <p class="introduction">
+        我们建议使用
+        <a href="https://jupyterhub.github.io/nbgitpuller/"
+          >&nbsp;nbgitpuller&nbsp;</a
+        >
+        向学生分发内容。您可以构建一个
+        <a href="https://jupyterhub.github.io/nbgitpuller/link"
+          >&nbsp;nbgitpuller&nbsp;</a
+        >
+        链接，并将其发送给您的学生。
+        当他们点击时，课程内容将被拉入他们的主目录，并打开相应的文件
+      </p>
+    </div>
   </div>
-</div>
 </div>
 
 <div class="container-fluid">
   <div class="footer">
-    <p>
-      按照如下方式联系我们
-    </p>
-    <p>
-      电话：010-82503969
-    </p>
-    <p>
-      邮箱答疑：hpc@ruc.edu.cn
-    </p>
+    <p>按照如下方式联系我们</p>
+    <p>电话：010-82503969</p>
+    <p>邮箱答疑：hpc@ruc.edu.cn</p>
   </div>
 </div>
 {% endblock %}
